@@ -1,0 +1,13 @@
+# .NET
+Backend/bin/
+Backend/obj/
+*.user
+
+# Node
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.env
+
+# OS
+.DS_Store
+Thumbs.db
