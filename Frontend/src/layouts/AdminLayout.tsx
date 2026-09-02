@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Menu, Button, Drawer, Grid, Typography, Space, Avatar } from 'antd';
 import {
   DashboardOutlined, PlusCircleOutlined, SoundOutlined, HistoryOutlined,
@@ -76,9 +76,10 @@ export function AdminLayout() {
           </Space>
 
           <Space size={isMobile ? 8 : 16}>
-            <Button icon={<EyeOutlined />} onClick={() => window.open('/', '_blank')}>
+            <Link to="/" style={{ fontSize: 13 }}><Button icon={<EyeOutlined />} >
               {isMobile ? '' : 'View Live Race'}
-            </Button>
+            </Button></Link>
+
             {!isMobile && <Text type="secondary" style={{ fontVariantNumeric: 'tabular-nums' }}>{serverTime.toLocaleTimeString()}</Text>}
             {!isMobile && (
               <Space size={6}>
