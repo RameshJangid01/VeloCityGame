@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Public "game" surface: dark cinematic backdrop ---- */
+.dusk-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(0, 224, 198, 0.08), transparent 42%),
+    radial-gradient(circle at 85% 15%, rgba(255, 61, 138, 0.06), transparent 42%),
+    linear-gradient(180deg, #0A0E17 0%, #0d1220 100%);
+  color: #F3F5F9;
+}
+
+.glass-card {
+  background: rgba(22, 29, 46, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+}
+
+/* Slightly lighter glass used for "light" accent moments within the
+   dark experience — e.g. winner spotlight — to give the hybrid feel. */
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.92);
+  color: #101828;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px -20px rgba(0,0,0,0.5);
+}
+
+.track-asphalt {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px,
+      transparent 48px
+    ),
+    linear-gradient(180deg, #131a2b 0%, #0c111d 100%);
+  border-radius: 18px;
+}
+
+.lane-dash {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(255,255,255,0.14) 0px,
+    rgba(255,255,255,0.14) 22px,
+    transparent 22px,
+    transparent 44px
+  );
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a3350; border-radius: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
