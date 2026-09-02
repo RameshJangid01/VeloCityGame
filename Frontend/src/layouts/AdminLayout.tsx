@@ -76,7 +76,7 @@ export function AdminLayout() {
           </Space>
 
           <Space size={isMobile ? 8 : 16}>
-            <Button icon={<EyeOutlined />} onClick={() => window.open('/race', '_blank')}>
+            <Button icon={<EyeOutlined />} onClick={() => window.open('/', '_blank')}>
               {isMobile ? '' : 'View Live Race'}
             </Button>
             {!isMobile && <Text type="secondary" style={{ fontVariantNumeric: 'tabular-nums' }}>{serverTime.toLocaleTimeString()}</Text>}
