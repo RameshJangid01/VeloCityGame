@@ -13,8 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 // ---- MongoDB ----
 var mongoSettings = new MongoSettings
 {
-    ConnectionString = builder.Configuration["Mongo:ConnectionString"] ?? "mongodb+srv://omnitrixb7_db_user:EBb2Zpf5s6GEANAG@cluster0.wbrnhwn.mongodb.net/",
-    DatabaseName = builder.Configuration["Mongo:DatabaseName"] ?? "BikeRacingDb"
+    ConnectionString = builder.Configuration["Mongo:ConnectionString"]
+        ?? throw new InvalidOperationException("Mongo:ConnectionString is not configured"),
+    DatabaseName = builder.Configuration["Mongo:DatabaseName"]
+        ?? "BikeRacingDb"
 };
 builder.Services.AddSingleton(mongoSettings);
 builder.Services.AddSingleton<MongoDbContext>();
@@ -103,11 +105,8 @@ using (var scope = app.Services.CreateScope())
 
 app.UseMiddleware<ExceptionMiddleware>();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // app.UseHttpsRedirection();
 app.UseCors("AppCors");
